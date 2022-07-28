@@ -1,0 +1,94 @@
+v1.0.0 -> 1.0.1
+
+* Fixed 30-50 seconds freeze when switching back on the plugin when started with AI control.
+* Fixed redraw bug for the MapWidget and TrackPositionWidget.
+* Fixed item coloring of the MapWidget and TrackPositionWidget.
+* Added flag to StandingsWidget to show/hide the Laps/Stops column.
+* Added some random topspeeds to the Editor display.
+* Absolute pixels for position and size properties are now displayed with a "px" postfix.
+* Position and size properties can now be entered without units. Current units are used then.
+* Tweaked (default) font color for the StandingsWidget entry for the own car to be more different to the others.
+* ETVTimingWidget has a "displayType" property now instead of the "alwaysVisible" one, that enables you to make it visible only if the current lap is not an outlap.
+* MiscWidget now shows the "Leader" also in the first lap.
+* Added low-fuel warning image (blinking) to FuelWidget.
+* Added estimated (at the end of the race) engine lifetime marker to the WearWidget.
+* Moved readme.html from the config folder to the root plugin folder.
+
+v1.0.1 -> 1.2.0
+
+Major:
+
+* Fixed engine and (esp.) brake wear/lifetime calculations.
+* Added support for rendering the overlay on the session monitor views.
+* When observing other vehicles the HUD displays data for this vehicle (as much as available).
+* Some Widgets (or parts if them) are now auto-hidden when switching to AI control, since the rFactor Plugin interface doesn't provide data for them in that case.
+* Added a localizations system (translations) for Widgets.
+* Added support for imperial units.
+* Added MapWidget rotation according to the current vehicle's heading.
+* Added sector specific colors to MapWidget.
+* MapWidget/TrackPositionWidget: draw important positions last.
+* Added vehicle class relative scoring (configuration global option).
+* Added support for timed races (estimate max laps, calculate lifetime).
+* Improved early rendering of Widgets to reduce the gap when entering the cockpit.
+* Added rfdynhud.ini as central plugin configuration file to support localizations and custom config folders, etc.
+* RevMeterWidget: Rev limit from setup is now used. This enables you to actually use rev markes fixed in the background image.
+* RevMeterWidget: Digital max revs can now be boost level dependent.
+* Added pause detection. (esp. engine wear will not go down)
+* Added a data cache to restore fuel usage and fastest lap times per mod, car and track.
+* Added support for multiple displays.
+* Added SpeedoWidget.
+* Added AssembledWidget to combine existing Widgets to create a new and more complex one in an efficient way.
+* Added support for images to style the ETV Widgets. Images are made by Daniel Zemla.
+* Added a Director plugin and editor extension to control a remote in game rfDynHUD from a Director mode in the editor.
+* Added TinyPositionWidget.
+* Added ETVFastestLapWidget.
+* Added a basic RideHeightWidget.
+* Added a FuelNeedleWidget.
+* Added DashboardWidget.
+* Added ETVTelemetryWidget (Revs, Velocity, Trottle/Brake).
+* StartingLightWidget's visibility handling changed. Make sure, initialVisibility is on, if you don't plan to toggle it with an InputAction.
+
+Minor:
+
+* StartingLightWidget is now auto-sized based on the number of lights (track dependent).
+* Added padding properties to all Widgets.
+* Fixed laptimes to be properly displayed after finishing the race.
+* Added a "No Border" button to the border selector. (Simply sets the selected border alias to an empty string)
+* Dirty flag is now set when the %/px button is pressed for position and size properties.
+* Positioning property is now properly modified when dragging a Widget around. This also fixes the inability to move a centered Widget to the left or right boudary.
+* Improved StandingsWidget update frequency to only update when things can have changed (performance improvement).
+* The Widget name is now applied to the InputBindingsManager when a Widget is doubleclicked (instead of selection change).
+* An image can now be selected in the ImageSelector through a double click.
+* Editor: New magnet/rail effect (theoretically replaces the grid, but I left it in).
+* RevMeterWidget: When the background image is changed, positions and sizes of elements are adjusted.
+* Moved border configurations from config/images/borders to config/borders
+* When saving a new configuration in the editor (Save As), a filename construction utility helps you to construct the correct filename.
+* Widgets menu in the editor looks nicer with small Widget icons.
+* Added support for key combinations and hit counts for input bindings.
+* Added peak needle to the RevMeterWidget.
+* Sub textures are now properly drawn in the editor.
+* Editor takes less memory now and doesn't consume any more than necessary.
+* Fixed minimum clock frequency (some value updates look smoother).
+* Added Widget import tool.
+* Added a Widget copy tool.
+* Added Editor Panel zooming (CTRL + Mouse Wheel).
+* Added a way to select Widgets in background in the editor (context menu). Selections are also better preserved.
+* Added a management system for log files to archive a given number of log files for reference. See rfdynhud.ini 'numArchivedLogFiles'.
+* Tweaked rendering code to allow for overlapping Widgets.
+* When adding a new Widget, it is now added to the center of the current viewport instead of absolute top left.
+* Added multiple visibility flags to properly handle visibility.
+* Fixed clear rectangles for drawn strings (fixes very small StandingsWidgets).
+* Max revs are now handled better to improve the workaround for an rf-plugin-interface bug.
+
+v1.2.0 -> 1.2.1
+
+* Added d3d9.dll chaining to allow for other d3d9.dlls like softth to cooperate with rfDynHUD.
+
+TODO:
+
+* Improve multi-screen and viewport change detection.
+* Meta config (merge configurations)
+
+* Improve viewed vehicle detection (use mine if unclear, read from application)
+* Render plugin in replay mode (theoretically not possible, needs application memory access)
+* MapWidget/TrackPositionWidget: Display pace car (impossible, not in VehicleScoringInfo)
